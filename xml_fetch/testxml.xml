@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Workbook>
+ <Worksheet>
+  <Table>
+   <Row>
+    <Data></Data>
+    <Data></Data>
+    <Data></Data>
+    <Data></Data>
+    <Data></Data>
+    <Data></Data>
+    <Data></Data>
+   </Row>
+   <Row>
+    <Symbol>MSFT</Symbol>
+    <Name></Name>
+    <LastSale>47.65</LastSale>
+    <Sector>Technology</Sector>
+    <Industry>Computer Software: Prepackaged Software</Industry>
+    <HomePage>http://www.microsoft.com/</HomePage>
+    <Logo>http://www-scf.usc.edu/~mitulshr/Assignment4/logomicrosoft.png</Logo>
+   </Row>
+    <Row>
+    <Symbol></Symbol>
+    <Name>3M Company</Name>
+    <LastSale></LastSale>
+    <Sector></Sector>
+    <Industry></Industry>
+    <HomePage></HomePage>
+    <Logo></Logo>
+   </Row>
+    <Row>
+    <Symbol>INTC</Symbol>
+    <Name>Intel Corp</Name>
+    <LastSale>37.35</LastSale>
+    <Sector>Technology</Sector>
+    <Industry>Computer Industry</Industry>
+    <HomePage>http://www.intel.com/</HomePage>
+    <Logo>http://cs-server.usc.edu:45678/hw/hw4/logointel.png</Logo>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>

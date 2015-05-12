@@ -1,0 +1,35 @@
+#header {
+    
+    position: absolute;
+    margin-left: 450px;
+    margin-top: 50px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.tdhr {
+    border-bottom: 1px solid #000;   
+}
+
+#formtable {
+    align: center;
+    position: absolute;
+    margin-left:  260px;
+    margin-top: 180px;
+    padding-right: 25px;
+    padding-left: 25px;
+    border-style: solid;
+}
+
+#boder {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    border-style: solid;
+
+}
+
+.forhr {
+    border-bottom: 5px solid #000;
+}

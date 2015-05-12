@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+       <title>eBay Search</title>    
+       <link rel="stylesheet" type="text/css" href="hw6style.css">
+
+    <script>
+       function validate()
+        {
+          if(document.getElementById("keyword").value == "")
+              alert("Please Enter Value for Keyword");
+          if(document.getElementById("min").value != "")
+            {
+              if(document.getElementById("min").value < 0)
+                alert("Please Enter a positive amount for Minumum price value");
+            }
+          if(document.getElementById("max").value != "")
+            {
+              if(document.getElementById("max").value < 0)
+                alert("Please Enter a positive amount for Maximum price value");
+            }    
+          if((document.getElementById("max").value != "") && (document.getElementById("min").value > document.getElementById("max").value))
+              alert("Minimum amount cannot be more than maximum amount");
+         
+          if(document.getElementById("shipdays").value != "" && document.getElementById("shipdays").value < 1)
+              alert("Minimum handling time cannot be less than 1");
+        return;    
+        }
+       
+       function resetValues()
+        {
+          document.getElementById("myForm").reset();   
+        }
+       </script>
+    </head>
+   
+    <body>
+    <div id="header">
+        <table>
+          <tr>
+            <td>
+              <img src="ebay.jpg" height="100" width="110">     
+            </td>
+            <td>
+              Shopping
+            </td>
+          </tr>
+        </table>
+    </div>    
+    <div id="formtable">
+        <br>
+        <form id="myForm">
+        <table>
+    
+        <tr class="forhr">
+            <td>         
+                <b> Key Words*:</b>
+            </td>
+            <td>
+             <input type="text" size="50" name="keyword" id ="keyword">
+            </td>
+            </tr>
+            <tr class="forhr">    
+            <td>
+               <b>Price Range:</b>
+            </td>
+            <td>
+                from $ 
+                <input type="text" size="5"  name="rangemin" id ="min"> 
+                to $
+                <input type="text" size="5" name="rangemax" id = "max"> 
+                </td>        
+            </tr>
+            <tr>
+            <td>
+                <b>Condition:</b>
+                </td>
+            <td>
+                <input type="checkbox" name="cond"  value="new">New
+                <input type="checkbox" name="cond"  value="used">Used
+                <input type="checkbox" name="cond"  value="verygood">Very Good
+                <input type="checkbox" name="cond"  value="good">Good
+                <input type="checkbox" name="cond"  value="acceptable">Acceptable
+                </td>
+            </tr>
+            <tr>
+            <td>
+                <b>Buying Format:</b>
+                </td>
+            <td>
+                <input type="checkbox" name="buyformat"  value="now">Buy It Now
+                <input type="checkbox" name="buyformat"  value="auction">Auction
+                <input type="checkbox" name="buyformat"  value="ads">Classified Ads
+                </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Seller:</b>
+                </td>
+              <td>
+                <input type="checkbox" name="seller" value="retaccept">Return Accepted
+                </td>
+            </tr>
+            
+            <tr>
+            <td>
+                <b>Shipping:</b>
+                </td>   
+            <td>
+                <input type="checkbox" name="shipping" value="freeship">Free Shipping<br>
+                <input type="checkbox" name="shipping" value="expiteship">Expidite Shipping Available<br>
+                Max handing time(days):  <input type="text" size="5" id = "shipdays" name="shipping">
+                </td>  
+            </tr>
+            
+        <tr>
+            <td>
+              <b>Sort by:</b>
+            </td>
+            <td>
+            <select name="sort">
+                <option value="bestmatch" selected>Best Match</option>
+                <option value="prchighfirst">Price: hoghest first</option>
+                <option value="prclowfirst">Price: lowest first</option>
+                <option value="prcshphighfirst">Price + Shipping: hoghest first</option>
+                <option value="prcshplowfirst">Price + Shipping: lowest first</option>
+                </select>
+            </td>
+            </tr>
+        <tr>
+            <td>
+            <b>Result Per page:</b>
+            </td>
+            <td>
+            <select name="resperpg">
+                <option value="five">5</option>
+                <option value="ten"> 10</option>
+                <option value="fiften">15</option>
+                <option value="twenty">20</option>    
+                </select>
+            </td>
+            </tr>
+            <tr>
+              <td>
+                </td>
+            <td>
+                <div id="buttons">
+                <input type="button" value="clear" name="clear" onclick ="resetValues()">
+                <input type="submit" value="search" name="search" onclick="validate()">
+                </div>
+                </td>
+            </tr>
+        </form>
+        </table> 
+        <br>
+        </div>    
+</body>     
+</html> 
+    

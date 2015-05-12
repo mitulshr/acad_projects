@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>eBay Search</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+         .my-error-class 
+         {
+         color:red;
+         }
+         .my-valid-class {
+         color:green;
+         }
+      </style>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-responsive.css">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>   
+      <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <script src="HW8Script.js"></script>
+      <link rel="stylesheet" type="text/css" href="hw8style.css">
+   </head>
+   <body>
+      <div class = "container-fluid">
+         <div id="header">
+            <img src="ebay.jpg" style = "max-width: 150px;max-height: 150px;"> 
+            Shopping
+         </div>
+         <br>
+         <form id = "myForm" class = "form-horizontal" data-toggle="validator" role = "form">
+         <div class="form-group" >
+            <label for="keyword" class="col-sm-2 control-label">Key words&nbsp;<span style="color: red;";>*</span>:</label>
+            <div class = "col-sm-6">
+               <input type="text" class="form-control" placeholder="Enter Keywords" name="keyword" id ="keyword">         
+            </div>
+         </div>
+         <div class="form-group" >
+            <label for="min" class="col-sm-2 control-label">Price range:</label>
+            <div class = "col-sm-3">
+               <input type="number" class="form-control" placeholder="from ($)" name="rangemin" id ="min">         
+            </div>
+            <div class = "col-sm-3">
+               <input type="number" class="form-control" placeholder="to ($)" name="rangemax" id ="max">         
+            </div>
+         </div>
+         <div class="form-group" >
+            <label for="con1" class="col-sm-2 control-label">Condition:</label>
+            <div class = "col-sm-6">
+               <input id = "con1" type="checkbox" name="cond[]"  value="new">&nbsp;New&nbsp;&nbsp;&nbsp;
+               <input id = "con2" type="checkbox" name="cond[]"  value="used">&nbsp;Used&nbsp;&nbsp;&nbsp;
+               <input id = "con3" type="checkbox" name="cond[]"  value="verygood">&nbsp;Very Good&nbsp;&nbsp;&nbsp;
+               <input id = "con4" type="checkbox" name="cond[]"  value="good" >&nbsp;Good&nbsp;&nbsp;&nbsp;
+               <input id = "con5" type="checkbox" name="cond[]"  value="acceptable">&nbsp;Acceptable
+            </div>
+         </div>
+         <div class="form-group" >
+            <label for="buy1" class="col-sm-2 control-label">Buying format:</label>
+            <div class = "col-sm-6">
+               <input id ="buy1" type="checkbox" name="buyformat[]"  value="now">&nbsp;Buy It Now&nbsp;&nbsp;&nbsp;
+               <input id ="buy2" type="checkbox" name="buyformat[]"  value="auction">&nbsp;Auction&nbsp;&nbsp;&nbsp;
+               <input id ="buy3" type="checkbox" name="buyformat[]"  value="ads">&nbsp;Classified Ads&nbsp;&nbsp;&nbsp;
+            </div>
+         </div>
+         <div class="form-group" >
+            <label for="rtracc" class="col-sm-2 control-label">Seller:</label>
+            <div class = "col-sm-6">
+               <input id ="rtracc" type="checkbox" name="seller" value="retaccept">&nbsp;Return Accepted
+            </div>
+         </div>
+         <div class="form-group" >
+            <label for="shty1" class="col-sm-2 control-label">Shipping:</label>
+            <div class = "col-sm-6">
+               <input id = "shty1" type="checkbox" name="shipping[]" value="freeship">&nbsp;Free Shipping&nbsp;&nbsp;&nbsp;
+               <input id = "shty2" type="checkbox" name="shipping[]" value="expiteship">&nbsp;Expidite Shipping Available
+            </div>
+            <div class="col-sm-6">
+               <input type="number" class="form-control" placeholder="Max handling time(days)" id = "shipdays" name="shipdays">
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="bstmatch" class="col-sm-2 control-label">Sort by:</label> 
+            <div class = "col-sm-6">
+               <select  class="form-control" id= "bstmatch"  name="sort">
+                  <option value="BestMatch" selected>Best Match</option>
+                  <option value="CurrentPriceHighest">Price: highest first</option>
+                  <option value="PricePlusShippingHighest">Price + Shipping: highest first</option>
+                  <option value="PricePlusShippingLowest">Price + Shipping: lowest first</option>
+               </select>
+            </div>
+         </div>
+         <div class = "form-group">
+            <label for="rpp" class="col-sm-2 control-label">Result per page:</label> 
+            <div class = "col-sm-6">
+               <select  class="form-control" name="resperpg" id ="rpp">
+                  <option value="5"  selected >5</option>
+                  <option value="10">10</option>
+               </select>
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+               <div id="buttons">
+                  <input type="button" id = "clrbtn" class = "btn btn-default   " value="clear" name="clear" onclick ="resetValues()" >
+                  <input type="submit" class = "btn btn-primary" value="search" name="search">
+               </div>
+            </div>
+         </div>
+         <input type="hidden" name="pageNumber" value="1">
+         <form>
+         <br>
+         <div id="result"> </div>
+      </div>
+   </body>
+</html>
+<div id="result"> </div>
+</div>
+</body>     
+</html>

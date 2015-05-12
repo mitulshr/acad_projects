@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Parsing XML file of Company List</title>
+   </head>
+   <body>
+      <br><br>
+      <script>
+         function loadXML(url)
+         {
+         if (window.XMLHttpRequest)
+           {// code for IE7+, Firefox, Chrome, Opera, Safari
+           xmlhttp=new XMLHttpRequest();
+           }
+         else
+           {// code for IE6, IE5
+           xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+           }
+         xmlhttp.open("GET",url,false);
+         xmlhttp.send();
+         xmlDoc=xmlhttp.responseXML;
+         if (xmlDoc.documentElement.nodeName == "parsererror")
+           {
+             window.alert("Error in XML File");
+             return "returns";
+           }
+         else
+           {
+            return xmlDoc;
+           } 
+         
+         }
+         
+         
+         function executeQuery(url)
+         {
+            var Doc;
+            if (!url)
+            {
+                window.alert("URL cannot be empty");
+                return false;
+            }
+            try
+            {
+                Doc = loadXML(url);
+            }
+            catch (err)
+            {
+               window.alert("Error in XML: File Not Available");
+              return false;
+            }
+            
+         var i,j;
+         var newWin
+         var x=Doc.getElementsByTagName("Row");
+         ELEMENT_NODE = 1;
+         if(x.length < 2 ) 
+            {
+             window.alert("XML Does't Cointain any Company List");
+             return false;
+            }
+         else
+           {
+             newWin =  window.open("");  
+           }
+         var ELEMENT_NODE = 1;
+         newWin.document.write('<table border="1" align = "center"><tr><th>');
+         for(j = 0; j < 7 ; j++)
+         {
+          if(x[0].getElementsByTagName("Data")[j].nodeType == ELEMENT_NODE)
+          {  
+           if(x[0].getElementsByTagName("Data")[j].childNodes.length > 0)
+             newWin.document.write(x[0].getElementsByTagName("Data")[j].childNodes[0].nodeValue);
+           else
+             newWin.document.write("N.A");  
+          newWin.document.write("</th><th>");
+          }
+         }
+         for (i=1;i<x.length;i++)
+         { 
+             if(x[i].getElementsByTagName("Symbol")[0].nodeType == ELEMENT_NODE)
+             {
+              newWin.document.write("<tr><td>");
+              if(x[i].getElementsByTagName("Symbol")[0].childNodes.length > 0)
+                 newWin.document.write(x[i].getElementsByTagName("Symbol")[0].childNodes[0].nodeValue);
+              else
+                 newWin.document.write("N.A");  
+              newWin.document.write("</td><td>");
+             }
+           
+             if(x[i].getElementsByTagName("Name")[0].nodeType == ELEMENT_NODE) 
+             {
+              if( x[i].getElementsByTagName("Name")[0].childNodes.length > 0 )         
+                 newWin.document.write( x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue); 
+              else
+                 newWin.document.write("N.A");
+              newWin.document.write("</td><td>");   
+             }
+           
+             if(x[i].getElementsByTagName("LastSale")[0].nodeType == ELEMENT_NODE) 
+             {
+              if(x[i].getElementsByTagName("LastSale")[0].childNodes.length > 0)
+                newWin.document.write(x[i].getElementsByTagName("LastSale")[0].childNodes[0].nodeValue);
+              else
+                newWin.document.write("N.A");
+              newWin.document.write("</td><td>");
+             }
+          
+             if(x[i].getElementsByTagName("Sector")[0].nodeType == ELEMENT_NODE) 
+             {
+              if(x[i].getElementsByTagName("Sector")[0].childNodes.length > 0)
+                newWin.document.write(x[i].getElementsByTagName("Sector")[0].childNodes[0].nodeValue);
+              else
+                newWin.document.write("N.A");
+              newWin.document.write("</td><td>");
+             }
+          
+             if(x[i].getElementsByTagName("Industry")[0].nodeType == ELEMENT_NODE) 
+             { 
+              if(x[i].getElementsByTagName("Industry")[0].childNodes.length > 0)
+                newWin.document.write(x[i].getElementsByTagName("Industry")[0].childNodes[0].nodeValue);
+              else
+                newWin.document.write("N.A");
+              newWin.document.write("</td><td>");
+             }
+           
+             if(x[i].getElementsByTagName("HomePage")[0].nodeType == ELEMENT_NODE) 
+             {  
+              if(x[i].getElementsByTagName("HomePage")[0].childNodes.length > 0 )
+              {
+                 var link = x[i].getElementsByTagName("HomePage")[0].childNodes[0].nodeValue;
+                 newWin.document.write('<a href =' + link + '> link to company </a>'   );
+              }
+              else
+                 newWin.document.write("N.A");
+              newWin.document.write("</td><td>");
+             }
+           
+             if(x[i].getElementsByTagName("Logo")[0].nodeType == ELEMENT_NODE) 
+             {   
+              if(x[i].getElementsByTagName("Logo")[0].childNodes.length > 0)
+              { 
+                var imgsrc = x[i].getElementsByTagName("Logo")[0].childNodes[0].nodeValue;
+                newWin.document.write('<img height="102" width="102" src =' + imgsrc + '>');
+              }
+              else
+                newWin.document.write("N.A");
+              newWin.document.write("</td></tr>");  
+             } 
+         }
+         newWin.document.write("</table>");
+         newWin.document.close();
+         }
+         
+      </script>
+      <div align = "center">
+         <form>
+            <font size="5">Enter URL For Company List XML File</font>
+            <br>
+            <p>
+               <input type="text" name="askQuery">
+               <br>
+            <p>
+               <input type="button" onClick="executeQuery(askQuery.value)" value="Submit Query">
+         </form>
+      </div>
+      <noscript>
+   </body>
+</html>

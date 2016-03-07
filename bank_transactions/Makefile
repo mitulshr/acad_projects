@@ -10,4 +10,4 @@ warmup1.o: warmup1.c  my402list.h
 
 
 clean:
-	rm -f *.o warmup1
+	rm *.o warmup1
